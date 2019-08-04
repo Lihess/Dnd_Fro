@@ -1,19 +1,11 @@
 {
-  "name": "project",
+  "name": "image",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.20",
-    "@fortawesome/free-brands-svg-icons": "^5.10.0",
-    "@fortawesome/free-regular-svg-icons": "^5.10.0",
-    "@fortawesome/free-solid-svg-icons": "^5.10.0",
-    "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-fontawesome": "^1.6.1",
-    "react-scripts": "3.0.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.87.3"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,8 +27,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.0"
   }
 }

@@ -36,22 +36,22 @@ FollowButton.propTypes = {
 
 function ProfileSmall({profileImage, nickname, id, images, follow}){
     return ( 
-        <div className = "Profile_Small">
-            <div className = "Profile_Column">
-                <div className = "Profile_ProfileImage" onClick = {() => history.push(`/Profile/${id}`)}>
+        <div className = "Profile-Small">
+            <div className = "Profile-Column">
+                <div className = "Profile-ProfileImage" onClick = {() => history.push(`/Profile/${id}`)}>
                     <ProfileImage profileImage = {profileImage} alt = {nickname}/>
                 </div>
-                <div className = "Profile_Info">
+                <div className = "Profile-Info">
                     <span className = "Nickname"> {nickname} </span>
                     <span className = "Id"> {"@" + id} </span>
                 </div>
                 { follow != null &&
-                    <div className = "Follow_Btn">
+                    <div className = "Follow-Btn">
                         <FollowButton follow = {follow}/>
                     </div>
                 }
             </div>
-            <div className = "Profile_Column">
+            <div className = "Profile-Column">
                 {images.map((image, index) => <Image image = {image} key = {index}/>)}
             </div>
         </div>
