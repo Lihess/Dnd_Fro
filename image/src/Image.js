@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './Image.css';
 import {Icon} from 'semantic-ui-react';
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
 
 const im = ["https://postfiles.pstatic.net/MjAxOTA3MzBfNyAg/MDAxNTY0NDkxMzU1MjYw.6PsoCMM-IhbyMp28iN-PGLiPRgFhUk85GP-iLWcQLsIg.qG9gNv0c480J1n8PkTKyD8SqKvkheTeFjVtuphz3CaEg.JPEG.she2325/7.jpg?type=w966",
 "https://postfiles.pstatic.net/MjAxOTA3MzBfODgg/MDAxNTY0NDkxMzU0OTY3.1VS0WEhoUmxz31Yv_Fqn8hTz0b_PI67lgDJsn3u3igcg.IeT-JpGIgHGKxUR-exblUdRKTSHZCJhaHNFQMcqxzEMg.JPEG.she2325/8.jpg?type=w966",
 "https://postfiles.pstatic.net/MjAxOTA3MzBfMTEg/MDAxNTY0NDkxMzU0ODY3.6eVSLBjwuAl2I_PZJl-rETOeIlCPLoH6Zd3BsRXu1LMg.WbPXfoyS3ACPaWJ73skzmsjnD1eHClaVgbpxAEw2cJ4g.JPEG.she2325/9.jpg?type=w966",
-"https://postfiles.pstatic.net/MjAxOTA3MzBfMjA2/MDAxNTY0NDkxMzU1NDQ2.vY704r4pmlsPx_ijWiAWMCbNUBw101-pRDzUxh7vxX8g.K9VsOmd0BkLHn73-GrF2nLzh4n1KzZiH2eoPfKHiWOAg.JPEG.she2325/11.jpg?type=w966"];
+"https://postfiles.pstatic.net/MjAxOTA3MzBfMjA2/MDAxNTY0NDkxMzU1NDQ2.vY704r4pmlsPx_ijWiAWMCbNUBw101-pRDzUxh7vxX8g.K9VsOmd0BkLHn73-GrF2nLzh4n1KzZiH2eoPfKHiWOAg.JPEG.she2325/11.jpg?type=w966",
+"https://postfiles.pstatic.net/MjAxOTA4MDVfMjcy/MDAxNTY1MDExNDA0NDQ0.6HOnJFq9OjAMYWAZcLNX1a8okDNHPRLm0s0Y6djzHUEg.fOX-DQbLGo_rUjmP9kR2vNp_ZKd6S8UnaWdeqRqnPK4g.JPEG.she2325/jailam-rashad-1297005-unsplash.jpg?type=w966"];
 
 Image.protoType = {
     id : PropTypes.string.isRequired,
-    tags : PropTypes.shape({
-        tag : PropTypes.string.isRequired
-    }),
     type : PropTypes.string.isRequired,
     uploadDate : PropTypes.string.isRequired,
     downloade : PropTypes.string.isRequired,
@@ -40,9 +41,8 @@ function Image({id, tags, type, uploadDate, downloade, kategorie, like, isLike, 
             </div>    
             <ImageUseInformation like = {like} isLike = {isLike} veiw = {veiw} size = {size} mark = {mark}/>
             <p className = "Relatied-Title Image-Column"> Relatied Image</p>
-            <div className = "Image-Column">
-                <RelationImage id = {id} tags = {tags}/>
-            </div>
+            <RelationImage id = {id}/>
+        
         </div>
      );
     
@@ -82,16 +82,19 @@ class RelationImage extends Component{
             tags: ["풍경", "푸른", "태그"]
         },{
             id : "2",
-            tags : ["야자수", "하", "밝은"]
+            tags : ["야자수", "푸", "밝은"]
         },{
             id : "3",
+            tags : ["풍경", "태", "밝은"]
+        },{
+            id : "4",
             tags : ["풍경", "태그", "밝은"]
         }]
     }
 
     SearchImage(){
         const relation = [];
-        this.state.image.forEach((image) => {
+        this.state.image.some((image) => {
             let n;
             if(this.props.id !== image.id){
                 n = 0;
@@ -99,28 +102,33 @@ class RelationImage extends Component{
                     if(image.tags.indexOf(tag) !== -1)
                         n++;
                 })
-                console.log(image.id);
             }
-            console.log(n);
             if(n >= 1){
                 relation.push(image);
             }// 일단은 이렇게!!!!!!! 백엔드에 따라 달라질 것, 동일 카테고리 내에서만 찾는 게 나을듯 
+            if (relation.length === 3) return true; //break
+            else return false; // 계속!
         })
         return relation;
     }
 
     render_Image(){
        const relation = this.SearchImage().map((image) => {
-           return <img className = "Image-Relation" src = {im[image.id]} alt = {image.id} key = {image.id} />
+           return (
+                <div className = "Image-Relation">
+                    <img src = {im[image.id]} alt = {image.id} key = {image.id} />
+                </div>
+           );
        })
        return relation;
     }
 
     render(){
         return( 
-            <div>
+            <div className = "Image-Column">
                 {this.render_Image()}
-            </div>);
+            </div>
+        );
     }
 }
 

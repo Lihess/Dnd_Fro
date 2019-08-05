@@ -17,7 +17,7 @@
 
 .Image-Column:nth-child(2) p{
     font-size: 15px;
-    margin-left : 10px;
+    margin-left : 20px;
 }
 
 .Image-UseInforfmation{
@@ -41,15 +41,23 @@
 }
 
 .Relatied-Title{
-    margin-top : 40px;
-    margin-left : 20px;
     font-size: 30px;
     font-weight: 600;
+}
+
+.Image-Column:last-child{
     width: 100%;
+    margin: 10px;
 }
 
 .Image-Relation{
-    margin-right: 2%;
-    width: 32%;
-    
+    margin-right: 1%;
+    width: 33%;
+    height: 20vw !important;
+    overflow: hidden;
+}
+
+.Image-Relation img{
+    width: 100%;
+    max-height: initial;
 }
