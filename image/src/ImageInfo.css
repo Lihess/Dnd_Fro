@@ -6,12 +6,11 @@
 
 .ImageInfo-Column{
     display: flex;
-    margin :  10px 0 10px 0;
-    padding: 0 10px 10px 10px;
+    padding: 10px;
 }
 
-.Profile{
-    border-bottom : 1px solid rgb(230, 230, 230);
+.ImageInfo-Column:nth-child(1){
+    margin-top : 10px;
 }
 
 .Profile-Image{
@@ -29,10 +28,9 @@
 .Profile-Info{
     display: flex;
     flex-direction: column;
-    margin-top : 15px;
+    margin-top : 20px;
     margin-left : 20px;
     text-align: left;
-    
 }
 
 .Profile-Info .Nickname{
@@ -49,7 +47,7 @@
 
 .Follow-Btn{
     position: relative;
-    bottom: 5px;
+    bottom: 12px;
     right: 5px;
     margin-left: auto;
     margin-top: auto;
@@ -62,8 +60,6 @@
 .Follow-Btn button{
     background: none;
     color:  rgb(180, 180, 180);
-    width: 60px;
-    height: 25px;
     border : none;
     font-size: 15px;
     font-weight: 600;
@@ -71,7 +67,7 @@
 }
 
 .Download{
-    border-bottom : 1px solid rgb(230, 230, 230);
+    margin-bottom: 3px;
 }
 
 .Download button{
@@ -93,7 +89,7 @@
 .ImageInfo-Column:last-child{
     flex-direction: column;
     background: rgb(240, 240, 240);
-    margin: 10px;
+    margin: 0 10px 10px 10px;
     padding: 10px 20px 10px 20px;
     border-radius: 5px;
 }

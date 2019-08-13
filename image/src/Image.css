@@ -45,19 +45,15 @@
     font-weight: 600;
 }
 
-.Image-Column:last-child{
-    width: 100%;
-    margin: 10px;
-}
-
 .Image-Relation{
+    width: 100%;
+    padding-bottom: 25%; 
+    background-size: cover;
+    background-position: center;
     margin-right: 1%;
-    width: 33%;
-    height: 20vw !important;
-    overflow: hidden;
 }
 
-.Image-Relation img{
-    width: 100%;
-    max-height: initial;
+.Image-Relation:last-child{
+    margin-right: 0;
 }
+

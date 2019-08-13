@@ -63,7 +63,7 @@ function ImageUseInformation({like, isLike, veiw, size, mark}){
                     <Icon className = "Like" name = {mark ? "heart" : "heart outline"} color = "red"/>
                     {like}
                 </div>
-                <div className = "Image-UseInforfmation-Item">
+                <div className = "Image-UseInforfmation-Item" >
                     <Icon className = "Veiw " name = "eye"/>
                     {veiw}
                 </div>
@@ -112,12 +112,11 @@ class RelationImage extends Component{
         return relation;
     }
 
+
     render_Image(){
        const relation = this.SearchImage().map((image) => {
-           return (
-                <div className = "Image-Relation">
-                    <img src = {im[image.id]} alt = {image.id} key = {image.id} />
-                </div>
+            return (
+                <div className = "Image-Relation" style = {{ backgroundImage : `url(${im[image.id]})`}}/>
            );
        })
        return relation;
