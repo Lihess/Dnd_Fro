@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import PropTypes from 'prop-types';
 import './ProfileSmall.css';
-
 import history from './history';
 
 ProfileSmall.propTypes = {
@@ -67,7 +65,8 @@ function ProfileImage({profileImage, alt}){
 
 function Image({image}){
     return(
-        <img className = "Image" src = {image.image} alt= {image.alt} onClick = {() => history.push(`/img/${image.image}`)}></img>
+            <div className = "Image" style = {{ backgroundImage : `url(${image.image})`}} onClick = {() => history.push(`/img/${image.image}`)}>
+            </div>
     );
 }
 
