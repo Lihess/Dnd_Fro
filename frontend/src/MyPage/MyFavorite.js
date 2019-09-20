@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { getAllFavorite } from './MyPageFunction';
+import { getAllFavorite, delFavImg } from './MyPageFunction';
 import './MyFavorite.css';
-import { Link } from 'react-router-dom';
+import MyPagePhotos from './MyPagePhotos';
 import { getFolder, addFolder, delFavFolder } from '../Image/ImageFunction';
 
 class MyFavorite extends Component {
@@ -16,7 +16,6 @@ class MyFavorite extends Component {
         folderLength: 0,
 
         input: "",
-        clickFolder: false,
         clickAddFolder: false,
         folderCheck : false
     }
@@ -55,7 +54,8 @@ class MyFavorite extends Component {
         getAllFavorite(ID).then(res=>{
             this.setState({
                 favoriteFolder : res,
-                nowPage: 1
+                nowPage: 1,
+                renderCheck: false
             })
         });
     }
@@ -108,9 +108,12 @@ class MyFavorite extends Component {
 
     // 현재 폴더의 안에있는 사진을 삭제하게 하기
     photoDeleteOnClick = (e) => {
-        const {ID} = this.state;
-        // e.target.key의 imgID를 와 id를 통해 삭제할 예정
-        this.getFolderList(ID);
+        const {ID, folder, nowPage} = this.state;
+        const imgID = parseInt(e.target.parentNode.children[1].children[0].alt);
+        const favFolderNum = folder[nowPage-1].favFolderNum;
+        delFavImg(favFolderNum, imgID).then(_ => {
+            this.getFolderList(ID);
+        })
     }
 
     // 폴더 추가 input 변경 감지
@@ -198,26 +201,33 @@ class MyFavorite extends Component {
         </React.Fragment>
     }
 
+
     _renderFolder = (favoriteFolder, nowPage) => {
-        const { folder } = this.state;
-        let folderFile = '';
+        const { ID, folder } = this.state;
+        let photoList = [];
         if(folder !== null) {
-            folderFile = favoriteFolder.map((res, index) => {
+            favoriteFolder.map((res, index) => {
                 if(folder[nowPage-1].favFolderNum === res.favFolderNum){
                     if(res.imgID !== null){
-                        return <Link to = {`/imagepage/${res.imgID}`} key={index+1}>
-                                <div className="MyFavorite-File">{index + 1}. {res.imgName}</div>
-                            </Link>
+                        const list = {
+                            favFolderNum: res.favFolderNum,
+                            imgID: res.imgID,
+                            imgUrl: res.imgUrl
+                        }
+                        photoList = photoList.concat(list);
                     }
                     return null;
                 }
-                else
-                    return null;
             })
         }
         return (
             <div className="MyFavorite-Files">
-                {folderFile}
+                <MyPagePhotos 
+                    id={ID}
+                    outputType={"FAVORITE"}
+                    photoList={photoList}
+                    listLength={photoList.length}
+                    photoDeleteOnClick={this.photoDeleteOnClick}/>
             </div>
         );
     }

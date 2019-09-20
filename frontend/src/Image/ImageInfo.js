@@ -216,10 +216,10 @@ class ImageInfo extends Component {
         tag,
         distribute,
         price,
-        // commercialAvailable,
-        // copyrightNotice,
-        // noChange,
-        // visibility,
+        commercialAvailable,
+        copyrightNotice,
+        noChange,
+        visibility,
         // userID,
         downCount,
         imgWidth,
@@ -231,6 +231,7 @@ class ImageInfo extends Component {
         myID
       } = this.state;
       const { payment } = this.props;
+      console.log(tag)
       return (
         <div className="ImageInfo">
           <Registrant userProfile={userProfile} myID={myID} followOnClick={this.followOnClick}/>
@@ -248,9 +249,9 @@ class ImageInfo extends Component {
               downloadClick={this.downloadClick}
               _minusFilm={this._minusFilm}
               isDown = {this.state.isDown}
-              commercialAvailable = "NotCommercialAvailable"
-              copyrightNotice = "CopyrightNotice"
-              noChange = "NoChange"
+              commercialAvailable = {commercialAvailable}
+              copyrightNotice = {copyrightNotice}
+              noChange = {noChange}
             />
           ) : null}
           <div className="ImageInfo-Column">
@@ -286,6 +287,7 @@ class ImageInfo extends Component {
           </div>
         </div>
       );
+     
     }
     else{
       return <React.Fragment></React.Fragment>;
