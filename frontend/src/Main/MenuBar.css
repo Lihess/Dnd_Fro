@@ -115,14 +115,14 @@
     color: black;
 }
 
-.Sub-Menu{
+.Menu-BestPhoto .Sub-Menu{
   opacity: 0;
   height: 0;
   transition: 0.3s;
   border: none;
 }
 
-.Sub-Menu .Sub-Item{
+.Menu-BestPhoto .Sub-Menu .Sub-Item{
     display: block;
     height: 25px;
     line-height: 1rem;
@@ -132,7 +132,7 @@
     color: white;
 }
 
-.Sub-Menu .Sub-Item:hover{
+.Menu-BestPhoto .Sub-Menu .Sub-Item:hover{
     background: rgb(130,130,130);
 }
 

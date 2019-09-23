@@ -60,7 +60,7 @@ class MenuBar extends Component {
                     <div className = "Menu-Item">
                         <Dropdown text="Category" pointing simple item className="link item Menu-Category">
                             <Dropdown.Menu> 
-                                <Dropdown.Item onClick = {this.handleToggle}> Best Photos </Dropdown.Item>
+                                <Dropdown.Item className = "Menu-BestPhoto" onClick = {this.handleToggle}> Best Photos </Dropdown.Item>
                                     <div className = {"Sub-Menu" + (this.state.visible ? " Visible" : "")}>
                                         <Link className = "Sub-Item" to = "/category/daily" onClick={this.handleState}>Daliy</Link>
                                         <Link className = "Sub-Item" to = "/category/weekly" onClick={this.handleState}>Weekly</Link>
