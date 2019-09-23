@@ -139,5 +139,4 @@ class MenuBar extends Component {
         );
     }
 }
-
 export default withRouter(MenuBar);
