@@ -33,7 +33,7 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-watermark-component": "^2.2.1",
-    "sequelize": "^5.12.2",
+    "sequelize": "^5.15.1",
     "universal-config": "^0.3.0",
     "watermarkjs": "^2.0.0"
   }
